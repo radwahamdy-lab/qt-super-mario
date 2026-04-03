@@ -6,7 +6,7 @@ Player::Player(QGraphicsItem* parent)
     : QObject(), QGraphicsRectItem(parent), velocityY(0), onGround(false) {
   setRect(0, 0, 30, 60);
   setBrush(Qt::red);
-  setPos(300, 0);
+  setPos(150, 0);
 
   setFlag(QGraphicsItem::ItemIsFocusable);
   setFocus();
