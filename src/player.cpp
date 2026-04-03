@@ -1,6 +1,7 @@
 #include "player.hpp"
 
 #include <QBrush>
+#include <QMessageBox>
 
 Player::Player(QGraphicsItem* parent)
     : QObject(), QGraphicsRectItem(parent), velocityY(0), onGround(false) {
@@ -29,6 +30,12 @@ void Player::updateState() {
   onGround = false;
   moveBy(0, velocityY);
 
+  if ((x() > 600 || x() < 0) || (y() < 0 || y() > 600)){
+    QMessageBox* msg = new QMessageBox();
+    msg -> setWindowTitle("Notification");
+    msg -> setText("You Lost!!");
+    msg -> exec();
+  }
   QList<QGraphicsItem*> items = collidingItems();
 
   if (items.size() != 0) {
